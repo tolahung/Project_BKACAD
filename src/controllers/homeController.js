@@ -1,5 +1,8 @@
 
 import db from '../models/index';
+import CRUDService from '../services/CRUDService';
+
+
 class HomeController {
     async getHomePage(req, res) {
         try {
@@ -10,6 +13,16 @@ class HomeController {
         } catch (e) {
             console.log(e);
         }
+    }
+
+    getCRUD(req,res){
+        res.render('crud');
+    }
+
+    async postCRUD(req,res){
+        let mess = await CRUDService.createNewUser(req.body);
+        console.log(mess);
+        res.send('post crud from server');
     }
 }
 

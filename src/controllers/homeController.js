@@ -40,13 +40,13 @@ class HomeController {
 
 
     //[GET] /edit-crud
-    async getEditCRUD(req,res) {
+    async getEditCRUD(req, res) {
         // console.log(req.query.id);
         // res.send('hello from edit');
         let userId = req.query.id;  //id la tham so minh truyen vao trong file displayCRUD
         if (userId) {
-            let userData =await CRUDService.getUserInforById(userId);
-            res.render('editCRUD.ejs',{
+            let userData = await CRUDService.getUserInforById(userId);
+            res.render('editCRUD.ejs', {
                 user: userData
             })
         } else {
@@ -55,11 +55,26 @@ class HomeController {
     }
 
     //[PUT] /put/crud
-    async putCRUD(req,res){
+    async putCRUD(req, res) {
         let data = req.body;
         await CRUDService.updateUserData(data);
         res.redirect('/get-crud');
-     }
+        // console.log(data);
+    }
+
+
+
+    //[DELETE] /delete-crud
+    async deleteCRUD(req, res) {
+        let id = req.query.id;
+        if (id) {
+            await CRUDService.deleteUserById(id);
+            res.redirect('/get-crud');
+        } else {
+            return res.send('user not found');
+        }
+
+    }
 }
 
 

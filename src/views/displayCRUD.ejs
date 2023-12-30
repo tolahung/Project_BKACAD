@@ -24,7 +24,9 @@
 </head>
 
 <body>
-    <p>Get crud from view</p>
+    <p>
+        <a href="/crud">Create User</a>
+    </p>
     Explain
     <table class="table">
         <thead class="thead-dark">
@@ -48,8 +50,9 @@
                   <td class="btn-edit" type="button">
                     <a href="/edit-crud?id=<%= dataTable[i].id %>">Edit</a>
                   </td>
+
                   <td class="btn-delete" type="button">
-                    <a href="">Delete</a>
+                    <a href="/delete-crud?id=<%= dataTable[i].id %>">Delete</a>
                   </td>
                 </tr>
              <% } %>
